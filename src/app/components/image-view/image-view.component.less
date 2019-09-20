@@ -11,10 +11,13 @@
     line-height: @tabs-height;
   }
   &-view {
+    height: calc(100% ~"-" @tabs-height);
+    overflow-y: auto;
+  }
+  &-view-wrapper {
     display: flex;
     justify-content: center;
     align-content: center;
-    overflow-y: auto;
   }
   &-view-card {
     width: 80%;
