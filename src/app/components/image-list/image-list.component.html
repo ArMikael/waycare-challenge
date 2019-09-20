@@ -1,6 +1,6 @@
 <ul class="image-list">
   <cdk-virtual-scroll-viewport class="image-list-scroll" itemSize="100">
-    <li *cdkVirtualFor="let image of imageList">
+    <li *cdkVirtualFor="let image of imageList" (click)="showImage(image)">
       <img [src]="image.thumbnail +'.jpg'" alt="">
     </li>
   </cdk-virtual-scroll-viewport>
