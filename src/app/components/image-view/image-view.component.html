@@ -1,1 +1,7 @@
-<p>image-view works!</p>
+<section class="image-view-container" *ngIf="selectedImage">
+  <div class="image-metadata">Metadata</div>
+
+  <div class="image-view">
+    <img [src]="selectedImage.download_url" alt="">
+  </div>
+</section>
