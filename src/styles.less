@@ -1,4 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/css/_colors";
+@import "assets/css/_reset";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1.2em;
+  color: @text-dark;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: @bg-base;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
