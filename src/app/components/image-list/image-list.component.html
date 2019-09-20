@@ -1,8 +1,7 @@
-<p>images-list works!</p>
-<ul>
-  <li *ngFor="let image of imageList">
-    {{ image.id }}
-
-    <img [src]="image.url +'.jpg'" alt="">
-  </li>
+<ul class="image-list">
+  <cdk-virtual-scroll-viewport class="image-list-scroll" itemSize="100">
+    <li *cdkVirtualFor="let image of imageList">
+      <img [src]="image.thumbnail +'.jpg'" alt="">
+    </li>
+  </cdk-virtual-scroll-viewport>
 </ul>
