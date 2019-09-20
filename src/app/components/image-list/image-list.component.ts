@@ -3,7 +3,7 @@ import * as M from '../../app.models';
 import { ImageService } from '../../services/image/image.service';
 import { StoreService } from '../../shared/store.service';
 import { fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-images-list',
@@ -36,14 +36,12 @@ export class ImageListComponent implements OnInit {
 
     imageList$
       .pipe(
-        debounceTime(500),
+        filter(event => event.target.className === 'image-list-image'),
+        debounceTime(200),
         distinctUntilChanged((prev, curr) => prev.target === curr.target)
       )
       .subscribe((event: MouseEvent) => {
-        const el = event.target as HTMLElement;
-        if (el.className === 'image-list-image') {
-          console.log(el);
-        }
+        console.log(event.target);
     });
   }
 }
