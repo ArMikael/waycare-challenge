@@ -5,4 +5,5 @@ export interface Image {
   height: number;
   url: string;
   download_url: string;
+  thumbnail?: string;
 }
