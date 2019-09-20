@@ -24,6 +24,7 @@ export class ImageListComponent implements OnInit {
       .subscribe((list: M.Image[]) => {
         this.imageList = list;
         this.watchImageHover();
+        this.watchTripleClick();
       });
   }
 
@@ -36,12 +37,25 @@ export class ImageListComponent implements OnInit {
 
     imageList$
       .pipe(
-        filter(event => event.target.className === 'image-list-image'),
+        filter((event: MouseEvent) => {
+          const el = event.target as HTMLElement;
+          return el.classList.contains('image-list-image');
+        }),
         debounceTime(200),
         distinctUntilChanged((prev, curr) => prev.target === curr.target)
       )
       .subscribe((event: MouseEvent) => {
         console.log(event.target);
+    });
+  }
+
+  watchTripleClick() {
+    const imageList$ = fromEvent(document.getElementById('imageList'), 'click');
+
+    imageList$.subscribe((event: MouseEvent|any) => {
+      if (event.detail === 3) {
+        event.target.classList += ' favorite-image';
+      }
     });
   }
 }
