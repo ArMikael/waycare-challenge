@@ -20,4 +20,12 @@ export class ImageViewComponent implements OnInit {
 
   }
 
+  showAll() {
+    console.log('Show All');
+  }
+
+  showFavorite() {
+    console.log('Show Favorite');
+  }
+
 }

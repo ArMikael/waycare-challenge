@@ -8,7 +8,7 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 const favoritesKey = 'favoriteImages';
 
 @Component({
-  selector: 'app-images-list',
+  selector: 'app-image-list',
   templateUrl: './image-list.component.html',
   styleUrls: ['./image-list.component.less']
 })
@@ -56,6 +56,15 @@ export class ImageListComponent implements OnInit {
     });
   }
 
+  addToFavorites(imageId) {
+    const isImageFav = this.favoriteImages.find(id => id === imageId);
+    if (isImageFav) { return; }
+
+    this.favoriteImages.push(imageId);
+
+    localStorage.setItem(favoritesKey, JSON.stringify(this.favoriteImages));
+  }
+
   watchImageHover() {
     const imageList$ = fromEvent(document, 'mousemove');
 
@@ -82,14 +91,5 @@ export class ImageListComponent implements OnInit {
         this.addToFavorites(event.target.id);
       }
     });
-  }
-
-  addToFavorites(imageId) {
-    const isImageFav = this.favoriteImages.find(id => id === imageId);
-    if (isImageFav) { return; }
-
-    this.favoriteImages.push(imageId);
-
-    localStorage.setItem(favoritesKey, JSON.stringify(this.favoriteImages));
   }
 }

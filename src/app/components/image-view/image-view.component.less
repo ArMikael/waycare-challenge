@@ -1,0 +1,28 @@
+@import "../../../assets/css/_custom";
+
+.image {
+  &-container {
+    height: 100%;
+    overflow-x: hidden;
+  }
+  &-metadata {
+    text-align: center;
+    height: @tabs-height;
+    line-height: @tabs-height;
+  }
+  &-view {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    overflow-y: auto;
+  }
+  &-view-card {
+    width: 80%;
+    padding: 30px;
+    background-color: @bg-light;
+    box-shadow: @box-shadow;
+  }
+  &-view-image {
+    width: 100%;
+  }
+}

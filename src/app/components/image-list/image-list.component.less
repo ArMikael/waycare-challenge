@@ -1,11 +1,34 @@
 @import "../../../assets/css/_custom";
 
+.aside {
+  width: 100%;
+  height: 100%;
+  &-tabs {
+    display: flex;
+    height: @tabs-height;
+  }
+  &-tabs-btn {
+    .resetBtn();
+    width: 48%;
+    height: 100%;
+    margin-right: 5px;
+    background-color: @bg-dark;
+    background-image: @bg-tabs-gradient;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    &.active {
+      color: @text-attention;
+      font-weight: 500;
+    }
+  }
+}
+
+
 .image-list {
   .resetUl();
   width: 100%;
-  height: 100%;
+  height: calc(100% ~"-" @tabs-height);
   overflow: auto;
-
   &-scroll {
     height: 100%;
   }

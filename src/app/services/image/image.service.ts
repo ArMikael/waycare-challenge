@@ -10,7 +10,7 @@ import * as M from '../../app.models';
 export class ImageService {
 
   constructor(private netService: NetService) { }
-  thumbnailWidth = 200;
+  thumbnailWidth = 285;
   thumbnailHeight = 100;
 
   getImageList(): Observable<M.Image[]> {

@@ -1,25 +1,39 @@
 @import "../assets/css/_custom";
 
 .main {
+  color: @text-dark;
   height: 100%;
+  padding: 0 20px;
+  background-color: @bg-light;
+  background-image: @bg-main-gradient;
+  &-title {
+    .resetH();
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.6em;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: @text-attention;
+    height: @main-title-height;
+    line-height: @main-title-height;
+  }
 }
 
 .content {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: calc(100% ~"-" @main-title-height);
   flex-wrap: nowrap;
   &-side {
     width: 300px;
     height: 100%;
-    color: @text-light;
-    background-color: @bg-dark;
+    color: @text-dark;
+    margin-right: 20px;
     flex: 0 0 300px;
   }
   &-center {
-    width: 100%;
+    //width: 100%;
     height: 100%;
-    flex: 1 1 100%;
-    background-color: @bg-light;
+    flex: 1 1;
   }
 }
