@@ -1,13 +1,12 @@
+@import "../../../assets/css/_custom";
+
 .image-list {
-  width: 200px;
-  max-height: 700px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  .resetUl();
+  width: 100%;
+  height: 100%;
   overflow: auto;
-  border: 1px solid lightgray;
+  &-scroll {
+    height: 100%;
+  }
 }
 
-.image-list-scroll {
-  height: 700px;
-}
