@@ -13,6 +13,9 @@
   &-view {
     height: calc(100% ~"-" @tabs-height);
     overflow-y: auto;
+    &:hover::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
   }
   &-view-wrapper {
     display: flex;

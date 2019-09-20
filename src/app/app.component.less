@@ -3,7 +3,6 @@
 .main {
   color: @text-dark;
   height: 100%;
-  padding: 0 20px;
   background-color: @bg-light;
   background-image: @bg-main-gradient;
   &-title {
@@ -25,14 +24,15 @@
   height: calc(100% ~"-" @main-title-height);
   flex-wrap: nowrap;
   &-side {
-    width: 300px;
+    width: @sidebar-width;
+    min-width: @sidebar-min-width;
     height: 100%;
     color: @text-dark;
+    margin-left: 2%;
     margin-right: 20px;
-    flex: 0 0 300px;
+    flex: 0 0 @sidebar-width;
   }
   &-center {
-    //width: 100%;
     height: 100%;
     flex: 1 1;
   }
