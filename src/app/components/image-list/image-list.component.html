@@ -1,0 +1,8 @@
+<p>images-list works!</p>
+<ul>
+  <li *ngFor="let image of imageList">
+    {{ image.id }}
+
+    <img [src]="image.url +'.jpg'" alt="">
+  </li>
+</ul>
