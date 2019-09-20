@@ -20,7 +20,7 @@ export class ImageListComponent implements OnInit {
   ) { }
 
   imageList: M.Image[];
-  fullImageList: M.Image[];
+  filteredList: M.Image[];
   favoriteImages: string[];
   isFavoritesShowed: boolean;
 
@@ -31,7 +31,7 @@ export class ImageListComponent implements OnInit {
     this.imageService.getImageList()
       .subscribe((list: M.Image[]) => {
         this.imageList = list;
-        this.fullImageList = list;
+        this.filteredList = list;
 
         this.getFavoriteImages();
         this.watchImageHover();
@@ -46,8 +46,7 @@ export class ImageListComponent implements OnInit {
   toggleImageListView() {
     this.isFavoritesShowed = !this.isFavoritesShowed;
 
-    this.imageList = this.isFavoritesShowed ? this.imageList.filter(image => image.isFavorite === true)
-      : this.fullImageList;
+    this.filteredList = this.isFavoritesShowed ? this.imageList.filter(image => image.isFavorite === true) : this.imageList;
   }
 
   getFavoriteImages() {
