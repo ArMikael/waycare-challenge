@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageListComponent } from './components/image-list/image-list.component';
+import { ImageViewComponent } from './components/image-view/image-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ImageListComponent
+    ImageListComponent,
+    ImageViewComponent
   ],
   imports: [
     BrowserModule,
