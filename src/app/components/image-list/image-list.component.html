@@ -1,12 +1,19 @@
 <div class="aside">
   <div class="aside-tabs">
-    <button class="aside-tabs-btn active" (click)="showAll()">All</button>
-    <button class="aside-tabs-btn" (click)="showFavorite()">Favorite</button>
+    <button class="aside-tabs-btn" [class.active]="!isFavoritesShowed" [disabled]="!isFavoritesShowed"
+            (click)="toggleImageListView()">
+      All
+    </button>
+    <button class="aside-tabs-btn" [class.active]="isFavoritesShowed" [disabled]="isFavoritesShowed"
+            (click)="toggleImageListView()">
+      Favorite
+    </button>
   </div>
   <ul class="image-list" id="imageList">
     <cdk-virtual-scroll-viewport class="image-list-scroll" itemSize="100">
       <li *cdkVirtualFor="let image of imageList" (click)="showImage(image)" class="image-list-item">
-        <img [src]="image.thumbnail +'.jpg'" alt="" class="image-list-image" [class.favorite-image]="image.isFavorite">
+        <img [src]="image.thumbnail +'.jpg'" alt="" [id]="image.id"
+             class="image-list-image" [class.favorite-image]="image.isFavorite">
       </li>
     </cdk-virtual-scroll-viewport>
   </ul>

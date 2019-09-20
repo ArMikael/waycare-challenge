@@ -19,13 +19,4 @@ export class ImageViewComponent implements OnInit {
       .subscribe(selectedImage => this.selectedImage = selectedImage);
 
   }
-
-  showAll() {
-    console.log('Show All');
-  }
-
-  showFavorite() {
-    console.log('Show Favorite');
-  }
-
 }

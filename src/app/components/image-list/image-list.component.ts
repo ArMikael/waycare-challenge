@@ -20,14 +20,18 @@ export class ImageListComponent implements OnInit {
   ) { }
 
   imageList: M.Image[];
+  fullImageList: M.Image[];
   favoriteImages: string[];
+  isFavoritesShowed: boolean;
 
   ngOnInit() {
     this.favoriteImages = [];
+    this.isFavoritesShowed = false;
 
     this.imageService.getImageList()
       .subscribe((list: M.Image[]) => {
         this.imageList = list;
+        this.fullImageList = list;
 
         this.getFavoriteImages();
         this.watchImageHover();
@@ -37,6 +41,13 @@ export class ImageListComponent implements OnInit {
 
   showImage(selectedImage): void {
     this.storeService.setSelectedImage(selectedImage);
+  }
+
+  toggleImageListView() {
+    this.isFavoritesShowed = !this.isFavoritesShowed;
+
+    this.imageList = this.isFavoritesShowed ? this.imageList.filter(image => image.isFavorite === true)
+      : this.fullImageList;
   }
 
   getFavoriteImages() {
@@ -61,6 +72,11 @@ export class ImageListComponent implements OnInit {
     if (isImageFav) { return; }
 
     this.favoriteImages.push(imageId);
+    this.imageList.map(image => {
+      if (image.id === imageId) {
+        image.isFavorite = true;
+      }
+    });
 
     localStorage.setItem(favoritesKey, JSON.stringify(this.favoriteImages));
   }
@@ -87,7 +103,6 @@ export class ImageListComponent implements OnInit {
 
     imageList$.subscribe((event: MouseEvent|any) => {
       if (event.detail === 3) {
-        event.target.classList += ' favorite-image';
         this.addToFavorites(event.target.id);
       }
     });
