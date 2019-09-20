@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as M from '../../app.models';
 import { ImageService } from '../../services/image/image.service';
+import { StoreService } from '../../shared/store.service';
 
 @Component({
   selector: 'app-images-list',
@@ -9,7 +10,11 @@ import { ImageService } from '../../services/image/image.service';
 })
 export class ImageListComponent implements OnInit {
 
-  constructor(private imageService: ImageService) { }
+  constructor(
+    private imageService: ImageService,
+    private storeService: StoreService
+  ) { }
+
   imageList: M.Image[];
 
   ngOnInit() {
@@ -20,4 +25,7 @@ export class ImageListComponent implements OnInit {
     });
   }
 
+  showImage(selectedImage) {
+    this.storeService.setSelectedImage(selectedImage);
+  }
 }

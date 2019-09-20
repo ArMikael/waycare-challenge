@@ -1,1 +1,12 @@
-<p>image-view works!</p>
+<section class="image-view-container" *ngIf="selectedImage">
+  <div class="image-metadata">
+    <span>Author: {{ selectedImage.author }}, </span>
+    <span>Id: {{ selectedImage.id }}, </span>
+    <span>Width: {{ selectedImage.width }}, </span>
+    <span>Height: {{ selectedImage.height }} </span>
+  </div>
+
+  <div class="image-view">
+    <img [src]="selectedImage.download_url" alt="">
+  </div>
+</section>
