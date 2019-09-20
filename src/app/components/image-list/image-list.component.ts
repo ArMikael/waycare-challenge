@@ -46,7 +46,8 @@ export class ImageListComponent implements OnInit {
   toggleImageListView() {
     this.isFavoritesShowed = !this.isFavoritesShowed;
 
-    this.filteredList = this.isFavoritesShowed ? this.imageList.filter(image => image.isFavorite === true) : this.imageList;
+    this.filteredList = this.isFavoritesShowed ? this.imageList.filter(image => image.isFavorite === true)
+      : this.imageList;
   }
 
   getFavoriteImages() {

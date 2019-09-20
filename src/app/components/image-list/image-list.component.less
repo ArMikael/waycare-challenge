@@ -40,5 +40,19 @@
 }
 
 .favorite-image {
-  border: 1px solid gold;
+
+}
+
+.favorite-item {
+  position: relative;
+
+  &:after {
+    display: block;
+    content: url('/assets/images/favorite-star-icon.svg');
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 }
