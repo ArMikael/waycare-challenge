@@ -14,8 +14,8 @@ export class ImageService {
   thumbnailHeight = 100;
 
   getImageList(): Observable<M.Image[]> {
-    return this.netService.getImageList()
-      .pipe(
+    return this.netService.getImageList().pipe(
+        // Build valid thumbnail link
         map((imageList: M.Image[]) => {
           imageList.map((image: any) => {
             const url = image.download_url.split('/');
