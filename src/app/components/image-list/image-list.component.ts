@@ -82,9 +82,9 @@ export class ImageListComponent implements OnInit {
   }
 
   watchImageHover() {
-    const imageList$ = fromEvent(document.getElementById('imageList'), 'mousemove');
+    const imageListHover$ = fromEvent(document.getElementById('imageList'), 'mousemove');
 
-    imageList$.pipe(
+    imageListHover$.pipe(
         filter((event: MouseEvent) => {
           const el = event.target as HTMLElement;
           return el.classList.contains('image-list-image');
@@ -96,9 +96,9 @@ export class ImageListComponent implements OnInit {
   }
 
   watchTripleClick() {
-    const imageList$ = fromEvent(document.getElementById('imageList'), 'click');
+    const imageListClick$ = fromEvent(document.getElementById('imageList'), 'click');
 
-    imageList$.subscribe((event: MouseEvent) => {
+    imageListClick$.subscribe((event: MouseEvent) => {
       if (event.detail === 3) {
         const target = event.target as HTMLElement;
         this.addToFavorites(target.id);
