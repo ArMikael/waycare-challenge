@@ -1,4 +1,4 @@
-<section class="image-container" *ngIf="selectedImage">
+<section class="image-container" *ngIf="selectedImage; else zeroState">
   <div class="image-metadata">
     <span>Author: {{ selectedImage.author }}, </span>
     <span>Id: {{ selectedImage.id }}, </span>
@@ -9,8 +9,17 @@
   <div class="image-view">
     <div class="image-view-wrapper">
       <div class="image-view-card">
-        <img [src]="selectedImage.download_url" alt="" class="image-view-image">
+        <img [src]="selectedImage.download_url" class="image-view-image">
       </div>
     </div>
   </div>
 </section>
+
+<ng-template #zeroState>
+  <div class="image-view-card zero-state">
+    <img src="../../../assets/images/zero-state.svg" class="zero-state-image">
+    <p class="zero-state-paragraph">
+      Click on image to view the full picture
+    </p>
+  </div>
+</ng-template>
