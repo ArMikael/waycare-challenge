@@ -23,6 +23,7 @@
   width: 100%;
   height: calc(100% ~"-" @main-title-height);
   flex-wrap: nowrap;
+
   &-side {
     width: @sidebar-width;
     min-width: @sidebar-min-width;
@@ -32,8 +33,38 @@
     margin-right: 20px;
     flex: 0 0 @sidebar-width;
   }
+
   &-center {
     height: 100%;
     flex: 1 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    height: initial;
+
+    &-title {
+      height: initial;
+      line-height: initial;
+      padding: 20px 0;
+    }
+  }
+
+  .content {
+    flex-direction: column;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    &-side {
+      width: 100%;
+      min-width: 290px;
+      min-height: 300px;
+      margin: 0 auto 20px;
+    }
+
+    &-center {
+      padding-bottom: 40px;
+    }
   }
 }

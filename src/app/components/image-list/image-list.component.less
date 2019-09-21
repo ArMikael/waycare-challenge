@@ -6,6 +6,8 @@
   &-tabs {
     display: flex;
     height: @tabs-height;
+    max-width: 300px;
+    margin: auto;
   }
   &-tabs-btn {
     .resetBtn();
@@ -53,5 +55,29 @@
     position: absolute;
     top: 10px;
     right: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .aside {
+    &-tabs {
+      max-width: unset;
+    }
+    &-tabs-btn {
+      width: 50%;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .image-list {
+    &-scroll {
+      min-height: 250px;
+    }
+    &-item {
+      max-width: unset;
+      margin: auto;
+    }
   }
 }
