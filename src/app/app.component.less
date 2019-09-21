@@ -25,18 +25,26 @@
   flex-wrap: nowrap;
 
   &-side {
-    width: @sidebar-width;
-    min-width: @sidebar-min-width;
+    width: @sidebar-wide-width;
     height: 100%;
     color: @text-dark;
     margin-left: 2%;
     margin-right: 20px;
-    flex: 0 0 @sidebar-width;
+    flex: 0 0 @sidebar-wide-width;
   }
 
   &-center {
     height: 100%;
     flex: 1 1;
+  }
+}
+
+@media (max-width: 1499px) {
+  .content {
+    &-side {
+      width: @sidebar-min-width;
+      flex: 0 0 @sidebar-min-width;
+    }
   }
 }
 

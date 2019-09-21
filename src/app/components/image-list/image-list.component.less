@@ -6,7 +6,7 @@
   &-tabs {
     display: flex;
     height: @tabs-height;
-    max-width: 300px;
+    max-width: @sidebar-wide-width;
     margin: auto;
   }
   &-tabs-btn {
@@ -37,7 +37,7 @@
     }
   }
   &-item {
-    max-width: 288px;
+    max-width: calc(@sidebar-wide-width ~"-" @scroll-width);
   }
   &-image {
     width: 100%;
@@ -55,6 +55,19 @@
     position: absolute;
     top: 10px;
     right: 10px;
+  }
+}
+
+@media (max-width: 1499px) {
+  .aside {
+    &-tabs {
+      max-width: @sidebar-min-width;
+    }
+  }
+  .image-list {
+    &-item {
+      max-width: calc(@sidebar-min-width ~"-" @scroll-width);
+    }
   }
 }
 
