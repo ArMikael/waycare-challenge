@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as M from '../../app.models';
 import { ImageService } from '../../services/image/image.service';
 import { StoreService } from '../../shared/store.service';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 const favoritesKey = 'favoriteImages';
@@ -12,7 +12,7 @@ const favoritesKey = 'favoriteImages';
   templateUrl: './image-list.component.html',
   styleUrls: ['./image-list.component.less']
 })
-export class ImageListComponent implements OnInit {
+export class ImageListComponent implements OnInit, OnDestroy {
 
   constructor(
     private imageService: ImageService,
@@ -23,6 +23,8 @@ export class ImageListComponent implements OnInit {
   filteredList: M.Image[];
   favoriteImages: string[];
   isFavoritesShowed: boolean;
+  imageListHoverSubscription: Subscription;
+  imageListClickSubscription: Subscription;
 
   ngOnInit() {
     this.favoriteImages = [];
@@ -84,7 +86,7 @@ export class ImageListComponent implements OnInit {
   watchImageHover() {
     const imageListHover$ = fromEvent(document.getElementById('imageList'), 'mousemove');
 
-    imageListHover$.pipe(
+    this.imageListHoverSubscription = imageListHover$.pipe(
         filter((event: MouseEvent) => {
           const el = event.target as HTMLElement;
           return el.classList.contains('image-list-image');
@@ -98,11 +100,16 @@ export class ImageListComponent implements OnInit {
   watchTripleClick() {
     const imageListClick$ = fromEvent(document.getElementById('imageList'), 'click');
 
-    imageListClick$.subscribe((event: MouseEvent) => {
+    this.imageListClickSubscription = imageListClick$.subscribe((event: MouseEvent) => {
       if (event.detail === 3) {
         const target = event.target as HTMLElement;
         this.addToFavorites(target.id);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.imageListHoverSubscription.unsubscribe();
+    this.imageListClickSubscription.unsubscribe();
   }
 }
